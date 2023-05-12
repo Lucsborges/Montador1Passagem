@@ -1,0 +1,9 @@
+/.vscode
+montador
+!/montador
+ligador
+!/ligador
+*.pre
+*.obj
+*.o
+*.zip

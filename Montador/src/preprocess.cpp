@@ -45,7 +45,7 @@ int preprocess(string filenamein, string filenameout){
 	//Fecha arquivos
 	file.close();
 	output.close();
-    return 1;
+    return 0;
 }
 
 

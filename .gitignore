@@ -7,3 +7,4 @@ ligador
 *.obj
 *.o
 *.zip
+Montador/*.asm

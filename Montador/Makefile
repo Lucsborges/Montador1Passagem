@@ -1,31 +1,23 @@
-Compiler = g++
-FLAGS = -Wall -Werror
+Compilador = g++
+FLAGS = -Wall -Wextra -std=c++11
 LIBS = -lm
 
+TARGET = MONTADOR
 
-EXEC = MONTADOR
+SRC_DIR = src
+INC_DIR = include
 
 
-all: src/preprocess.o src/main.o
-    g++ -g src/preprocess.o src/main.o -o main $(LIBS)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(SRC_DIR)/%.o, $(SRCS))
+FLAGS += -I$(INC_DIR)
 
-preprocess.o: src/preprocess.cpp
-    #$(Compiler) $(FLAGS) -o myprogram main.o myfunctions.o $(LIBS)
-    g++ -c src/preprocess.cpp 
 
-main.o: main.cpp
-    $(Compiler) $(FLAGS) -c main.cpp
+$(TARGET): $(OBJS)
+	$(Compilador) $(FLAGS) $(OBJS) -o $(TARGET) $(LIBS)
 
-#preprocess.o: myfunctions.cpp myheader.h
-    #$(Compiler) $(FLAGS) -c myfunctions.cpp
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(Compilador) $(FLAGS) -c $< -o $@ $(LIBS)
 
 clean:
-    rm -f *.o
-
-run:
-    ./$(EXEC)
-
-
-#ainda nao funciona, arruamr depois
-
-   # $(CXX) $(CXXFLAGS) -o myprogram main.o myfunctions.o $(LIBS)
+	rm -f $(OBJS) $(TARGET)

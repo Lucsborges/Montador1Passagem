@@ -8,3 +8,4 @@ ligador
 *.o
 *.zip
 Montador/*.asm
+*.png

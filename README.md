@@ -10,11 +10,11 @@
 ### Para Compilar:
 __MONTADOR:__ No diretório ./Montador, execute o comando:
 ```
-make clean
+make
 ```
 __LIGADOR:__ No diretório ./Ligador, execute o comando:
 ```
-make clean
+make
 ```
 
 ### Para Executar:

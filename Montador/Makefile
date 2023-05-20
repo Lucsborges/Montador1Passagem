@@ -7,6 +7,13 @@ TARGET = MONTADOR
 SRC_DIR = src
 INC_DIR = include
 
+ifeq ($(OS),Windows_NT)
+	EXECUTABLE_EXTENSION = .exe
+	RM = del /Q
+else
+	EXECUTABLE_EXTENSION =
+	RM = rm -f
+endif
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(SRC_DIR)/%.o, $(SRCS))
@@ -20,4 +27,4 @@ $(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(Compilador) $(FLAGS) -c $< -o $@ $(LIBS)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	$(RM) $(OBJS) $(TARGET)$(EXECUTABLE_EXTENSION)
